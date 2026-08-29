@@ -1,12 +1,4 @@
-# Iosevka build
-
-Custom [Iosevka](https://github.com/be5invis/Iosevka) builds: `Iosevka Mono` (fixed spacing) and
-`Iosevka Sans` (quasi-proportional), each in Regular/Medium/SemiBold with italics. Glyph variants
-live in `build-plans.toml`.
-
-Fonts are not committed. Releases are published by GitHub Actions.
-
-## Releases
+### Releases
 
 Push a `v*` tag to build and publish a release with four zips:
 
@@ -20,7 +12,7 @@ Push a `v*` tag to build and publish a release with four zips:
 `workflow_dispatch` runs the same build but uploads the zips as a workflow artifact instead of
 creating a release.
 
-## Building locally
+### Building locally
 
 Needs `bun`, `ttfautohint`, and `fontforge` with Python support.
 
@@ -33,7 +25,7 @@ git submodule update --init --depth 1
 `./patch` downloads `FontPatcher.zip` from the nerd-fonts release into `.cache/` and patches every
 font in `dist/` in parallel. Override the version with `PATCHER_VERSION=v3.5.1 ./patch`.
 
-## Updating Iosevka
+### Updating Iosevka
 
 The submodule is shallow, so fetch the tag you want before checking it out:
 
