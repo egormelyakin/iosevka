@@ -1,0 +1,25 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+PATCHER_VERSION="${PATCHER_VERSION:-v3.5.1}"
+PATCHER=".cache/FontPatcher/font-patcher"
+
+if [ ! -f "$PATCHER" ]; then
+    mkdir -p .cache
+    curl -fsSL "https://github.com/ryanoasis/nerd-fonts/releases/download/$PATCHER_VERSION/FontPatcher.zip" -o .cache/FontPatcher.zip
+    unzip -qo .cache/FontPatcher.zip -d .cache/FontPatcher
+fi
+
+patch_font() {
+    case "$(basename "$1")" in
+        *Mono*) width="--mono" ;;
+        *) width="--variable-width-glyphs" ;;
+    esac
+    fontforge -quiet -script "$PATCHER" --complete --careful --no-progressbars "$width" --outputdir nerd "$1"
+}
+export -f patch_font
+export PATCHER
+
+mkdir -p nerd
+find dist -name '*.ttf' -print0 | xargs -0 -P "$(nproc)" -I{} bash -c 'patch_font "$1"' _ {}

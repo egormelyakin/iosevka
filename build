@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+cp build-plans.toml iosevka/private-build-plans.toml
+(cd iosevka && bun install && bun run --bun verda -f verdafile.mjs ttf::IosevkaMono ttf::IosevkaSans)
+
+mkdir -p dist
+cp iosevka/dist/*/TTF/*.ttf dist/

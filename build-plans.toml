@@ -1,0 +1,43 @@
+[buildPlans.IosevkaMono]
+weights = { Regular = "default.Regular", Medium = "default.Medium", SemiBold = "default.SemiBold" }
+widths = { Normal = "default.Normal" }
+slopes = { Upright = "default.Upright", Italic = "default.Oblique" }
+family = "Iosevka Mono"
+spacing = "fixed"
+
+[buildPlans.IosevkaMono.variants.design]
+one = "base"
+zero = "dotted"
+capital-g = "toothless-corner-serifless-hooked"
+capital-q = "horizontal-tailed"
+f = "flat-hook-serifless"
+g = "single-storey-flat-hook-serifless"
+j = "flat-hook-serifed"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+brace = "straight"
+guillemet = "straight"
+ampersand = "upper-open"
+percent = "rings-continuous-slash"
+
+[buildPlans.IosevkaSans]
+weights = { Regular = "default.Regular", Medium = "default.Medium", SemiBold = "default.SemiBold" }
+widths = { Normal = "default.Normal" }
+slopes = { Upright = "default.Upright", Italic = "default.Oblique" }
+family = "Iosevka Sans"
+spacing = "quasi-proportional"
+
+[buildPlans.IosevkaSans.variants.design]
+one = "base"
+zero = "dotted"
+capital-g = "toothless-corner-serifless-hooked"
+capital-q = "horizontal-tailed"
+f = "flat-hook-serifless"
+g = "single-storey-flat-hook-serifless"
+j = "flat-hook-serifed"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+brace = "straight"
+guillemet = "straight"
+ampersand = "upper-open"
+percent = "rings-continuous-slash"
