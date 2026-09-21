@@ -37,6 +37,7 @@ jobs:
           zip -qj release/IosevkaSans.zip dist/IosevkaSans-*.ttf
           zip -qj release/IosevkaMonoNerdFont.zip nerd/IosevkaMono*.ttf
           zip -qj release/IosevkaSansNerdFont.zip nerd/IosevkaSans*.ttf
+          (cd web && zip -qr ../release/IosevkaMonoWebFont.zip IosevkaMono && zip -qr ../release/IosevkaSansWebFont.zip IosevkaSans)
 
       - uses: actions/upload-artifact@v4
         with:

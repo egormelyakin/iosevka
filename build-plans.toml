@@ -4,6 +4,7 @@ widths = { Normal = "default.Normal" }
 slopes = { Upright = "default.Upright", Italic = "default.Oblique" }
 family = "Iosevka Mono"
 spacing = "fixed"
+webfontFormats = ["WOFF2"]
 
 [buildPlans.IosevkaMono.variants.design]
 one = "base"
@@ -26,6 +27,7 @@ widths = { Normal = "default.Normal" }
 slopes = { Upright = "default.Upright", Italic = "default.Oblique" }
 family = "Iosevka Sans"
 spacing = "quasi-proportional"
+webfontFormats = ["WOFF2"]
 
 [buildPlans.IosevkaSans.variants.design]
 one = "base"

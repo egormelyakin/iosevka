@@ -3,7 +3,13 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 cp build-plans.toml iosevka/private-build-plans.toml
-(cd iosevka && bun install && bun run --bun verda -f verdafile.mjs ttf::IosevkaMono ttf::IosevkaSans)
+(cd iosevka && bun install && bun run --bun verda -f verdafile.mjs ttf::IosevkaMono ttf::IosevkaSans webfont::IosevkaMono webfont::IosevkaSans)
 
 mkdir -p dist
 cp iosevka/dist/*/TTF/*.ttf dist/
+
+for group in IosevkaMono IosevkaSans; do
+    mkdir -p "web/$group"
+    cp -r "iosevka/dist/$group/WOFF2" "web/$group/"
+    cp "iosevka/dist/$group/$group.css" "web/$group/"
+done
