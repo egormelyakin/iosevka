@@ -1,15 +1,18 @@
 ### Releases
 
-Push a `v*` tag to build and publish a release with six zips:
+Push a `v*` tag to build and publish a release with nine zips:
 
-| Asset | Contents |
-| --- | --- |
-| `IosevkaMono.zip` | plain fixed-width family |
-| `IosevkaSans.zip` | plain proportional family |
-| `IosevkaMonoNerdFont.zip` | Nerd Font Mono, patched with `--complete --mono` |
-| `IosevkaSansNerdFont.zip` | Nerd Font Propo, patched with `--complete --variable-width-glyphs` |
-| `IosevkaMonoWebFont.zip` | woff2 files plus `IosevkaMono.css` |
-| `IosevkaSansWebFont.zip` | woff2 files plus `IosevkaSans.css` |
+| Asset                      | Contents                                                           |
+| -------------------------- | ------------------------------------------------------------------ |
+| `IosevkaMono.zip`          | plain fixed-width family                                           |
+| `IosevkaSans.zip`          | plain proportional family                                          |
+| `IosevkaSerif.zip`         | plain proportional slab-serif family                               |
+| `IosevkaMonoNerdFont.zip`  | Nerd Font Mono, patched with `--complete --mono`                   |
+| `IosevkaSansNerdFont.zip`  | Nerd Font Propo, patched with `--complete --variable-width-glyphs` |
+| `IosevkaSerifNerdFont.zip` | Nerd Font Propo, patched with `--complete --variable-width-glyphs` |
+| `IosevkaMonoWebFont.zip`   | woff2 files plus `IosevkaMono.css`                                 |
+| `IosevkaSansWebFont.zip`   | woff2 files plus `IosevkaSans.css`                                 |
+| `IosevkaSerifWebFont.zip`  | woff2 files plus `IosevkaSerif.css`                                |
 
 `workflow_dispatch` runs the same build but uploads the zips as a workflow artifact instead of
 creating a release.
@@ -20,13 +23,13 @@ Needs `bun`, `ttfautohint`, and `fontforge` with Python support.
 
 ```sh
 git submodule update --init --depth 1
-./build   # dist/*.ttf, web/<family>/{<family>.css,WOFF2/*.woff2}
-./patch   # nerd/*.ttf
+./build # dist/*.ttf, web/<family>/{<family>.css,WOFF2/*.woff2}
+./patch # nerd/*.ttf
 ```
 
 The web font zips unpack to a directory per family. Serve it as-is and link the CSS, which
-references `WOFF2/*.woff2` relatively and declares the families `Iosevka Mono Web` and
-`Iosevka Sans Web`.
+references `WOFF2/*.woff2` relatively and declares the families `Iosevka Mono Web`,
+`Iosevka Sans Web`, and `Iosevka Serif Web`.
 
 `./patch` downloads `FontPatcher.zip` from the nerd-fonts release into `.cache/` and patches every
 font in `dist/` in parallel. Override the version with `PATCHER_VERSION=v3.5.1 ./patch`.
